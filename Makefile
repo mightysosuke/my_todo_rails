@@ -21,3 +21,6 @@ migrate:
 
 rspec:
 	$(DOCKER_COMPOSE) run web rspec
+
+annotate:
+	$(DOCKER_COMPOSE) run web annotate --routes --models
