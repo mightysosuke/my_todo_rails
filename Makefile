@@ -18,3 +18,6 @@ install:
 
 migrate:
 	$(DOCKER_COMPOSE) run web rails db:create
+
+rspec:
+	$(DOCKER_COMPOSE) run web rspec
