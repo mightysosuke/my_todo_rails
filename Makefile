@@ -27,3 +27,6 @@ annotate:
 
 migrate:
 	$(DOCKER_COMPOSE) run web bundle exec ridgepole --config config/database.yml --env development --file db/schemas/Schemafile --apply
+
+rubocop:
+	$(DOCKER_COMPOSE) run web bundle exec rubocop --require rubocop-airbnb
