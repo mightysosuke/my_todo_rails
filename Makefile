@@ -16,7 +16,7 @@ new:
 install:
 	$(DOCKER_COMPOSE) run web bundle install
 
-migrate:
+db_create:
 	$(DOCKER_COMPOSE) run web rails db:create
 
 rspec:
@@ -24,3 +24,6 @@ rspec:
 
 annotate:
 	$(DOCKER_COMPOSE) run web annotate --routes --models
+
+migrate:
+	$(DOCKER_COMPOSE) run web bundle exec ridgepole --config config/database.yml --env development --file db/schemas/Schemafile --apply
