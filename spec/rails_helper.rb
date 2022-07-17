@@ -64,4 +64,12 @@ RSpec.configure do |config|
 
   # factory_bot
   config.include FactoryBot::Syntax::Methods
+
+  # shoulda-matchers
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
 end
