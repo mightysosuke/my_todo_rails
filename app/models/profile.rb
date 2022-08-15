@@ -11,6 +11,7 @@
 #  updated_at :datetime         not null
 #
 class Profile < ApplicationRecord
+  include UlidPk
   validates :nickname, presence: true
   validates :email, presence: true
 

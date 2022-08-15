@@ -8,6 +8,7 @@
 #  created_at :datetime         not null
 #
 class User < ApplicationRecord
+  include UlidPk
   validates :auth0_uid, presence: :true
 
   has_one :profile
