@@ -1,1 +1,2 @@
-# require 'authors.schema.rb'
+require 'users.schema.rb'
+require 'profiles.schema.rb'
