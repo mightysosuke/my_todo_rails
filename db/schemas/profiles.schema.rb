@@ -8,4 +8,3 @@ create_table :profiles, force: :cascade, charset: 'utf8mb4', options: 'ENGINE=In
 end
 
 add_foreign_key "profiles", "users", name: "profile_ibfk_1"
-
