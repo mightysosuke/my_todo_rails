@@ -6,4 +6,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  # TODO: 後で消す
+  get '/public', to: 'public#public'
+  get '/private', to: 'private#private'
 end

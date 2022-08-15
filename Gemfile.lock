@@ -100,6 +100,7 @@ GEM
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
+    jwt (2.4.1)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -239,6 +240,7 @@ DEPENDENCIES
   bootsnap
   debug
   factory_bot_rails
+  jwt
   mysql2 (~> 0.5)
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
@@ -252,4 +254,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.3.18
+   2.3.20
