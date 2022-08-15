@@ -11,5 +11,5 @@ class User < ApplicationRecord
   include UlidPk
   validates :auth0_uid, presence: :true
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
 end
