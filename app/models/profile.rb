@@ -2,12 +2,18 @@
 #
 # Table name: profiles
 #
-#  id         :bigint           not null, primary key
-#  user_id    :bigint           not null
+#  id         :string(255)      not null, primary key
+#  user_id    :string(255)      not null
 #  nickname   :string(255)      not null
+#  email      :string(255)      not null
 #  icon       :string(255)
-#  updated_at :datetime         not null
 #  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 class Profile < ApplicationRecord
+  include UlidPk
+  validates :nickname, presence: true
+  validates :email, presence: true
+
+  belongs_to :user
 end

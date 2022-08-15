@@ -26,7 +26,8 @@ annotate:
 	$(DOCKER_COMPOSE) run api annotate --routes --models
 
 migrate:
-	$(DOCKER_COMPOSE) run api bundle exec ridgepole --config config/database.yml --env development --file db/schemas/Schemafile --apply
+	$(DOCKER_COMPOSE) run api bundle exec ridgepole -c config/database.yml -E development -f db/schemas/Schemafile --apply && \
+	$(DOCKER_COMPOSE) run api bundle exec ridgepole -c config/database.yml -E test -f db/schemas/Schemafile --apply
 
 rubocop:
 	$(DOCKER_COMPOSE) run api bundle exec rubocop --require rubocop-airbnb
