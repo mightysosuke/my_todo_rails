@@ -30,7 +30,7 @@ migrate:
 	$(DOCKER_COMPOSE) run api bundle exec ridgepole -c config/database.yml -E test -f db/schemas/Schemafile --apply
 
 rubocop:
-	$(DOCKER_COMPOSE) run api bundle exec rubocop --require rubocop-airbnb
+	$(DOCKER_COMPOSE) run api bundle exec rubocop --require rubocop-airbnb -a
 
 edit_credentials:
 	$(DOCKER_COMPOSE) run -e EDITOR=vim api rails credentials:edit

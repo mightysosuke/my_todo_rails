@@ -8,6 +8,6 @@ module UlidPk
   end
 
   def set_ulid
-    self.id = ULID.generate if self.id.blank?
+    self.id = ULID.generate if id.blank?
   end
 end
