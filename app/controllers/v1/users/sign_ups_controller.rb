@@ -22,7 +22,6 @@ class V1::Users::SignUpsController < V1::Users::ApplicationController
   private
 
   def sign_up_params
-    pp params
     params.require(:sign_up).permit(:nickname, :email, :icon)
   end
 end
