@@ -12,6 +12,7 @@ class V1::Users::SignUpsController < V1::Users::ApplicationController
             icon: sign_up_params[:icon],
           )
         end
+        # render json: { icon: url_for(user.profile.icon) }
       end
       head :created
     else

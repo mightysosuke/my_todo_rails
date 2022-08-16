@@ -11,9 +11,12 @@
 #
 class Profile < ApplicationRecord
   include UlidPk
+
+  has_one_attached :icon
+
   validates :nickname, presence: true
   validates :email, presence: true
+  validates :icon, presence: true
 
   belongs_to :user
-  has_one_attached :icon
 end
