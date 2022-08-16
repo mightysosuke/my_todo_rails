@@ -6,7 +6,7 @@
 #  user_id    :string(255)      not null
 #  nickname   :string(255)      not null
 #  email      :string(255)      not null
-#  icon       :string(255)
+#  icon       :string(255)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

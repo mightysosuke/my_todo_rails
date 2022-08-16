@@ -9,7 +9,7 @@ class V1::Users::SignUpsController < V1::Users::ApplicationController
             user: user,
             nickname: sign_up_params[:nickname],
             email: sign_up_params[:email],
-            icon: sign_up_params[:icon] || nil,
+            icon: sign_up_params[:icon],
           )
         end
       end
@@ -22,6 +22,6 @@ class V1::Users::SignUpsController < V1::Users::ApplicationController
   private
 
   def sign_up_params
-    params.require(:sign_up).permit(:nickname, :email, :icon)
+    params.permit(:nickname, :email, :icon)
   end
 end
