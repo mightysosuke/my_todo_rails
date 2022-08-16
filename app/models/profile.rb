@@ -6,14 +6,17 @@
 #  user_id    :string(255)      not null
 #  nickname   :string(255)      not null
 #  email      :string(255)      not null
-#  icon       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 class Profile < ApplicationRecord
   include UlidPk
+
+  has_one_attached :icon
+
   validates :nickname, presence: true
   validates :email, presence: true
+  validates :icon, presence: true
 
   belongs_to :user
 end
