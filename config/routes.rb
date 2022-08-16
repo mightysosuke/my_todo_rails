@@ -6,6 +6,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  namespace :v1 do
+    namespace :users do
+      resource :sign_up, only: :create
+    end
+  end
   # TODO: 後で消す
   get '/public', to: 'public#public'
   get '/private', to: 'private#private'
