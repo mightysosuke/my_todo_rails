@@ -11,26 +11,26 @@ docker_start:
 	$(DOCKER_COMPOSE) up -d
 
 new:
-	$(DOCKER_COMPOSE) run api bundle exec rails new . --force --api -d mysql --skip-test
+	$(DOCKER_COMPOSE) exec api bundle exec rails new . --force --api -d mysql --skip-test
 
 install:
-	$(DOCKER_COMPOSE) run api bundle install
+	$(DOCKER_COMPOSE) exec api bundle install
 
 db_create:
-	$(DOCKER_COMPOSE) run api rails db:create
+	$(DOCKER_COMPOSE) exec api rails db:create
 
 rspec:
-	$(DOCKER_COMPOSE) run api rspec
+	$(DOCKER_COMPOSE) exec api rspec
 
 annotate:
-	$(DOCKER_COMPOSE) run api annotate --routes --models
+	$(DOCKER_COMPOSE) exec api annotate
 
 migrate:
-	$(DOCKER_COMPOSE) run api bundle exec ridgepole -c config/database.yml -E development -f db/schemas/Schemafile --apply && \
-	$(DOCKER_COMPOSE) run api bundle exec ridgepole -c config/database.yml -E test -f db/schemas/Schemafile --apply
+	$(DOCKER_COMPOSE) exec api bundle exec ridgepole -c config/database.yml -E development -f db/schemas/Schemafile --apply && \
+	$(DOCKER_COMPOSE) exec api bundle exec ridgepole -c config/database.yml -E test -f db/schemas/Schemafile --apply
 
 rubocop:
-	$(DOCKER_COMPOSE) run api bundle exec rubocop --require rubocop-airbnb -a
+	$(DOCKER_COMPOSE) exec api bundle exec rubocop --require rubocop-airbnb -a
 
 edit_credentials:
-	$(DOCKER_COMPOSE) run -e EDITOR=vim api rails credentials:edit
+	$(DOCKER_COMPOSE) exec -e EDITOR=vim api rails credentials:edit
