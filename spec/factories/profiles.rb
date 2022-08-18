@@ -2,12 +2,21 @@
 #
 # Table name: profiles
 #
-#  id         :string(255)      not null, primary key
-#  user_id    :string(255)      not null
-#  nickname   :string(255)      not null
-#  email      :string(255)      not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                     :string(255)      not null, primary key
+#  email(メールアドレス)  :string(255)      not null
+#  nickname(ニックネーム) :string(255)      not null
+#  created_at(作成日時)   :datetime         not null
+#  updated_at(更新日時)   :datetime         not null
+#  user_id(ユーザーID)    :string(255)      not null
+#
+# Indexes
+#
+#  index_profiles_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...    (user_id => users.id)
+#  profile_ibfk_1  (user_id => users.id)
 #
 FactoryBot.define do
   factory :profile do
