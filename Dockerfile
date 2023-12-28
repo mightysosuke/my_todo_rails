@@ -1,8 +1,9 @@
-FROM ruby:3.0.0
+FROM ruby:3.1.4
 
 RUN apt-get update -qq && apt-get -y install \
     build-essential \
     libpq-dev \
+    nodejs \
     vim
 
 RUN mkdir /my_todo_rails
