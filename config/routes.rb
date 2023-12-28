@@ -2,6 +2,7 @@
 #
 #                                   Prefix Verb   URI Pattern                                                                                       Controller#Action
 #                         v1_users_sign_up POST   /v1/users/sign_up(.:format)                                                                       v1/users/sign_ups#create
+#                              v1_users_me GET    /v1/users/me(.:format)                                                                            v1/users/mes#show
 #                                   public GET    /public(.:format)                                                                                 public#public
 #                                  private GET    /private(.:format)                                                                                private#private
 #            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
@@ -38,6 +39,7 @@ Rails.application.routes.draw do
   namespace :v1 do
     namespace :users do
       resource :sign_up, only: :create
+      resource :me, only: :show
     end
   end
   # TODO: 後で消す
