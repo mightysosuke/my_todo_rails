@@ -65,6 +65,7 @@ group :development do
   gem 'annotate'
   gem 'rubocop-airbnb'
   gem "better_errors"
+  gem 'bullet'
 end
 
 group :test do
