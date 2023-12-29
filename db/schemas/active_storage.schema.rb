@@ -14,7 +14,7 @@ end
 
 create_table :active_storage_attachments, id: :primary_key do |t|
   t.string     :name,     null: false
-  t.references :record,   null: false, polymorphic: true, index: false, type: :bigint
+  t.references :record,   null: false, polymorphic: true, index: false, type: :string
   t.references :blob,     null: false, type: :bigint
 
   t.datetime :created_at, precision: 6, null: false
