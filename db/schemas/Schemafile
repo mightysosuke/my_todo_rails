@@ -1,3 +1,4 @@
 require 'active_storage.schema.rb'
 require 'users.schema.rb'
 require 'profiles.schema.rb'
+require 'todos.schema.rb'
