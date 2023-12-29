@@ -12,4 +12,5 @@ class User < ApplicationRecord
   validates :auth0_uid, presence: :true
 
   has_one :profile, dependent: :destroy
+  has_many :todos, dependent: :destroy
 end
