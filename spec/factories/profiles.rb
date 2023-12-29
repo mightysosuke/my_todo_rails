@@ -20,5 +20,12 @@
 #
 FactoryBot.define do
   factory :profile do
+    association :user
+    email { Faker::Internet.email }
+    nickname { Faker::Internet.username }
+
+    after(:build) do |profile|
+      profile.icon.attach(io: File.open('spec/fixtures/icon.png'), filename: 'icon.png', content_type: 'image/png')
+    end
   end
 end

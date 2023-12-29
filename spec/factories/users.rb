@@ -9,5 +9,6 @@
 #
 FactoryBot.define do
   factory :user do
+    auth0_uid { Faker::Alphanumeric.alpha(number: 10) }
   end
 end

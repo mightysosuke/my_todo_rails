@@ -25,6 +25,9 @@ rspec:
 annotate:
 	$(DOCKER_COMPOSE) exec api annotate
 
+routes:
+	$(DOCKER_COMPOSE) exec api rails routes
+
 migrate:
 	$(DOCKER_COMPOSE) exec api bundle exec ridgepole -c config/database.yml -E development -f db/schemas/Schemafile --apply && \
 	$(DOCKER_COMPOSE) exec api bundle exec ridgepole -c config/database.yml -E test -f db/schemas/Schemafile --apply
