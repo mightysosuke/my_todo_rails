@@ -1,4 +1,4 @@
-class V1::Users::SignUpsController < V1::Users::ApplicationController
+class V1::Users::SignUpsController < V1::AuthorizationsController
   def create
     if JsonWebToken.verify(http_token)
       ActiveRecord::Base.transaction do
