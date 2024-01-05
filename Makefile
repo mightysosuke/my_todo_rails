@@ -10,6 +10,9 @@ docker_build:
 docker_start:
 	$(DOCKER_COMPOSE) up -d
 
+restart_api:
+	$(DOCKER_COMPOSE) restart api
+
 new:
 	$(DOCKER_COMPOSE) exec api bundle exec rails new . --force --api -d mysql --skip-test
 
