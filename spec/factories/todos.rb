@@ -3,7 +3,7 @@
 # Table name: todos
 #
 #  id                   :string(255)      not null, primary key
-#  content(内容)        :string(255)      not null
+#  content(内容)        :text(65535)      not null
 #  title(タイトル)      :string(255)      not null
 #  created_at(作成日時) :datetime         not null
 #  updated_at(更新日時) :datetime         not null
@@ -19,6 +19,7 @@
 #
 FactoryBot.define do
   factory :todo do
-    
+    title { Faker::Job.title }
+    content { Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false) }
   end
 end

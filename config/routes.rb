@@ -3,8 +3,7 @@
 #                                   Prefix Verb   URI Pattern                                                                                       Controller#Action
 #                         v1_users_sign_up POST   /v1/users/sign_up(.:format)                                                                       v1/users/sign_ups#create
 #                              v1_users_me GET    /v1/users/me(.:format)                                                                            v1/users/mes#show
-#                                   public GET    /public(.:format)                                                                                 public#public
-#                                  private GET    /private(.:format)                                                                                private#private
+#                                 v1_todos GET    /v1/todos(.:format)                                                                               v1/todo/todos#index
 #            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
 #               rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                              action_mailbox/ingresses/relay/inbound_emails#create
 #            rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                           action_mailbox/ingresses/sendgrid/inbound_emails#create
@@ -41,8 +40,8 @@ Rails.application.routes.draw do
       resource :sign_up, only: :create
       resource :me, only: :show
     end
+    scope module: :todo do
+      resources :todos, only: :index
+    end
   end
-  # TODO: 後で消す
-  get '/public', to: 'public#public'
-  get '/private', to: 'private#private'
 end

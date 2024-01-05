@@ -10,6 +10,9 @@ docker_build:
 docker_start:
 	$(DOCKER_COMPOSE) up -d
 
+restart_api:
+	$(DOCKER_COMPOSE) restart api
+
 new:
 	$(DOCKER_COMPOSE) exec api bundle exec rails new . --force --api -d mysql --skip-test
 
@@ -38,3 +41,6 @@ rubocop:
 
 edit_credentials:
 	$(DOCKER_COMPOSE) exec -e EDITOR=vim api rails credentials:edit
+
+console:
+	$(DOCKER_COMPOSE) exec api rails console

@@ -11,7 +11,7 @@ module Secured
     @auth_payload, @auth_header = auth_token
     @user = User.find_by!(auth0_uid: @auth_payload['sub'])
   rescue JWT::VerificationError, JWT::DecodeError
-    render json: { message: :unauthorized }, status: :unauthorized
+    render json: { message: :Unauthorized }, status: :unauthorized
   end
 
   def auth_payload
