@@ -19,7 +19,7 @@
 #
 FactoryBot.define do
   factory :todo do
-    title {  }
-    content {  }
+    title { Faker::Job.title }
+    content { Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false) }
   end
 end

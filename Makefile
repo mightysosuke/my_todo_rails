@@ -38,3 +38,6 @@ rubocop:
 
 edit_credentials:
 	$(DOCKER_COMPOSE) exec -e EDITOR=vim api rails credentials:edit
+
+console:
+	$(DOCKER_COMPOSE) exec api rails console

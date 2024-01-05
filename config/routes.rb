@@ -41,8 +41,8 @@ Rails.application.routes.draw do
       resource :sign_up, only: :create
       resource :me, only: :show
     end
+    scope module: :todo do
+      resources :todos, only: :index
+    end
   end
-  # TODO: 後で消す
-  get '/public', to: 'public#public'
-  get '/private', to: 'private#private'
 end
