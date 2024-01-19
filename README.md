@@ -47,3 +47,7 @@ curl --url https://mytodo.jp.auth0.com/oauth/token \
   --header 'content-type: application/json' \
   --data "{\"client_id\":\"${CLIENT_ID}\",\"client_secret\":\"${CLIENT_SECRET}\",\"audience\":\"https://api.mytodo.com/\",\"grant_type\":\"client_credentials\"}"
 ```
+
+curl --url https://mytodo.jp.auth0.com/oauth/token \
+  --header 'content-type: application/json' \
+  --data "{\"client_id\":\"YLg9Ke4JewQIF92NjZQ9ABvkQQKx5Uqj\",\"client_secret\":\"HKNjIRZ3_RNcUEjKR84C-spMmcdrTrYfz1UHOk8hxo2szk92kBX-yVh1NzbFtJwH\",\"audience\":\"https://api.mytodo.com/\",\"grant_type\":\"client_credentials\"}"
