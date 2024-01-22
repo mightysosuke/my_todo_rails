@@ -39,7 +39,7 @@ Rails.application.routes.draw do
       resource :me, only: :show
     end
     scope module: :todo do
-      resources :todos, only: [:index, :show, :create]
+      resources :todos, only: [:index, :show, :create, :destroy]
     end
   end
 end

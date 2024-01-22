@@ -13,6 +13,12 @@ class V1::Todo::TodosController < V1::AuthorizationsController
     head :created
   end
 
+  def destroy
+    todo = current_user.todos.find(params[:id])
+    todo.destroy!
+    head :no_content
+  end
+
   private
 
   def todo_params
