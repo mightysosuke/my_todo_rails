@@ -44,4 +44,23 @@ RSpec.describe "V1::Todo::Todos", type: :request do
       end
     end
   end
+
+  describe "POST /v1/todos" do
+    let(:valid_attributes) { attributes_for(:todo) }
+    context "ログイン済みのユーザの場合" do
+      before do
+        authorization_stub
+        post v1_todos_path, params: { todo: valid_attributes }.to_json, headers: headers
+      end
+      it "ステータスコードが201であること" do
+        expect(response).to have_http_status(201)
+      end
+
+      it "新しいtodoが作成されること" do
+        expect(user.todos.count).to eq(4)
+        expect(user.todos.last.title).to eq(valid_attributes[:title])
+        expect(user.todos.last.content).to eq(valid_attributes[:content])
+      end
+    end
+  end
 end
