@@ -1,6 +1,10 @@
 class V1::Todo::TodosController < V1::AuthorizationsController
   def index
-    render json: TodosResource.new(current_user.todos.order(:id)).serialize
+    render json: Todo::TodoResource.new(current_user.todos.order(:id)).serialize
+  end
+
+  def show
+    render json: Todo::TodoResource.new(current_user.todos.find(params[:id])).serialize
   end
 
   def create

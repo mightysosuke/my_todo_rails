@@ -1,4 +1,4 @@
-class UserMeResource < ApplicationResource
+class User::UserMeResource < ApplicationResource
   attributes :nickname, :email, :icon
 
   attribute :icon do |resource|
