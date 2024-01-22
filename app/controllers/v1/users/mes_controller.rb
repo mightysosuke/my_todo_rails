@@ -1,5 +1,5 @@
 class V1::Users::MesController < V1::AuthorizationsController
   def show
-    render json: UserMeResource.new(current_user.profile).serialize
+    render json: User::UserMeResource.new(current_user.profile).serialize
   end
 end

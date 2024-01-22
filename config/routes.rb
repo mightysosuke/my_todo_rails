@@ -4,6 +4,8 @@
 #                         v1_users_sign_up POST   /v1/users/sign_up(.:format)                                                                       v1/users/sign_ups#create
 #                              v1_users_me GET    /v1/users/me(.:format)                                                                            v1/users/mes#show
 #                                 v1_todos GET    /v1/todos(.:format)                                                                               v1/todo/todos#index
+#                                          POST   /v1/todos(.:format)                                                                               v1/todo/todos#create
+#                                  v1_todo GET    /v1/todos/:id(.:format)                                                                           v1/todo/todos#show
 #            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
 #               rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                              action_mailbox/ingresses/relay/inbound_emails#create
 #            rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                           action_mailbox/ingresses/sendgrid/inbound_emails#create
@@ -31,17 +33,13 @@
 #                     rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                                    active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
   namespace :v1 do
     namespace :users do
       resource :sign_up, only: :create
       resource :me, only: :show
     end
     scope module: :todo do
-      resources :todos, only: [:index, :create]
+      resources :todos, only: [:index, :show, :create]
     end
   end
 end

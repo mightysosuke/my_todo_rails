@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UserMeResource, type: :resource do
+RSpec.describe User::UserMeResource, type: :resource do
   let!(:user) { create(:user) }
   let!(:profile) { create(:profile, user: user) }
 
