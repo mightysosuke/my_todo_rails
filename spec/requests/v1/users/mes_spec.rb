@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe V1::Users::MesController, type: :request do
-let!(:user) { create(:user) }
-    let!(:profile) { create(:profile, user: user) }
-    let!(:headers) { { "Content-Type" => "application/json" } }
-    let!(:res) do
-      {
-        nickname: profile.nickname,
-        email: profile.email,
-        icon: url_for(profile.icon),
-      }.as_json
-    end
+  let!(:user) { create(:user) }
+  let!(:profile) { create(:profile, user: user) }
+  let!(:headers) { { "Content-Type" => "application/json" } }
+  let!(:res) do
+    {
+      nickname: profile.nickname,
+      email: profile.email,
+      icon: url_for(profile.icon),
+    }.as_json
+  end
 
   describe "GET /v1/users/me" do
     context "ログイン済みのユーザの場合" do

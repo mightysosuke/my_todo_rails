@@ -1,4 +1,4 @@
-name: Run RSpec
+name: CI
 
 on:
   push:
@@ -18,11 +18,8 @@ jobs:
           ruby-version: 3.1.4
           bundler-cache: true
 
-      - name: Show ruby version
-        run: ruby -v
-
       - name: Run lint
-        run: bundle exec rubocop
+        run: make rubocop
 
   build:
     runs-on: ubuntu-latest

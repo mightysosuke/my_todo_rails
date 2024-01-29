@@ -13,7 +13,7 @@ class V1::ApplicationController < ApplicationController
     '403': { message: 'アクセスが拒否されました', status: :forbidden },
     '404': { message: 'リソースが見つかりませんでした', status: :not_found },
     '422': { message: 'リクエストは適切ですが、意味的なエラーにより処理できませんでした', status: :unprocessable_entity },
-    '500': { message: 'サーバーエラーが発生しました', status: :internal_server_error }
+    '500': { message: 'サーバーエラーが発生しました', status: :internal_server_error },
   }.freeze
 
   def handle_error(error, key)
