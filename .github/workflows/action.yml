@@ -19,7 +19,7 @@ jobs:
           bundler-cache: true
 
       - name: Run lint
-        run: make rubocop
+        run: bundle exec rubocop --require rubocop-airbnb -a
 
   build:
     runs-on: ubuntu-latest
