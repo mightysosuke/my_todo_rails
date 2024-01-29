@@ -50,6 +50,7 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3
         sudo /etc/init.d/mysql start
+        cp config/database.yml.ci config/database.yml
         bundle exec rails db:create
         bundle exec ridgepole -c config/database.yml -f db/schemas/Schemafile --apply
         bundle exec rspec
