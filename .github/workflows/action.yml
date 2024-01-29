@@ -15,7 +15,8 @@ jobs:
       db:
         image: mysql:8.0
         env:
-          MYSQL_ROOT_PASSWORD: password
+          # MYSQL_ROOT_PASSWORD: password
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: my_todo_rails_test
         ports: ['3306:3306']
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
@@ -37,5 +38,5 @@ jobs:
         bundle install --jobs 4 --retry 3
         sudo /etc/init.d/mysql start
         bundle exec rails db:create
-        bundle exec rails db:schema:load
+        bundle exec ridgepole -c config/database.yml -f db/schemas/Schemafile --apply
         bundle exec rspec
