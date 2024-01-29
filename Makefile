@@ -22,6 +22,9 @@ install:
 db_create:
 	$(DOCKER_COMPOSE) exec api rails db:create
 
+db_migrate:
+	$(DOCKER_COMPOSE) exec api rails db:migrate
+
 rspec:
 	$(DOCKER_COMPOSE) exec api rspec
 

@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [ feature/41 ]
+  pull_request:
+    branches: [ feature/41 ]
+
+jobs:
+  # rubocop:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+
+  #     - name: Set up Ruby
+  #       uses: ruby/setup-ruby@v1
+  #       with:
+  #         ruby-version: 3.1.4
+  #         bundler-cache: true
+
+  #     - name: Run lint
+  #       run: bundle exec rubocop --require rubocop-airbnb -a
+
+  build:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.1.4
+        bundler-cache: true
+
+    - name: Bundler and gem install
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+
+    - name: Database create and migrate
+      # env:
+      #   RAILS_ENV: test
+      run: |
+        cp config/database.yml.ci config/database.yml
+        bundle exec rails db:create RAILS_ENV=test
+        bundle exec ridgepole -c config/database.yml -f db/schemas/Schemafile --apply RAILS_ENV=test
+
+    - name: Run rspec
+      run: bundle exec rspec
