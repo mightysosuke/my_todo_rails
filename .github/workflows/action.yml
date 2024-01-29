@@ -24,6 +24,7 @@ jobs:
       shell: bash
       run: |
         make docker_build
+        make docker_start
         make db_create
         make db_migrate
       env:
