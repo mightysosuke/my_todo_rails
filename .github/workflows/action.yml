@@ -27,7 +27,7 @@ jobs:
       db:
         image: mysql:8.0
         env:
-          # MYSQL_ROOT_PASSWORD: password
+          MYSQL_ROOT_PASSWORD: password
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: my_todo_rails_test
         ports: ['3306:3306']
