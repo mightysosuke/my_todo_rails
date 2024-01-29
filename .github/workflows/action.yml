@@ -41,16 +41,19 @@ jobs:
         ruby-version: 3.1.4
         bundler-cache: true
 
-    - name: Build and test
+    - name: Bundler and gem install
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3 --path vendor/bundle
+
+    - name: Database create and migrate
       env:
         RAILS_ENV: test
         DATABASE_URL: mysql2://root:password@127.0.0.1:3306/my_todo_rails_test
       run: |
-        printenv
-        gem install bundler
-        bundle install --jobs 4 --retry 3
-        sudo /etc/init.d/mysql start
         cp config/database.yml.ci config/database.yml
         bundle exec rails db:create
         bundle exec ridgepole -c config/database.yml -f db/schemas/Schemafile --apply
-        bundle exec rspec
+
+    - name: Run rspec
+      run: bundle exec rspec
