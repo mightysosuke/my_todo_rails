@@ -7,10 +7,8 @@ on:
     branches: [ feature/41 ]
 
 jobs:
-  build:
-
+  rspec:
     runs-on: ubuntu-latest
-
     services:
       db:
         image: mysql:8.0
@@ -22,11 +20,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
     - name: Setup docker
       shell: bash
       run: |
-        make build
+        make docker_build
         make db_create
         make db_migrate
       env:
