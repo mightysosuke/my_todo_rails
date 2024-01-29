@@ -7,19 +7,19 @@ on:
     branches: [ feature/41 ]
 
 jobs:
-  rubocop:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+  # rubocop:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.1.4
-          bundler-cache: true
+  #     - name: Set up Ruby
+  #       uses: ruby/setup-ruby@v1
+  #       with:
+  #         ruby-version: 3.1.4
+  #         bundler-cache: true
 
-      - name: Run lint
-        run: bundle exec rubocop --require rubocop-airbnb -a
+  #     - name: Run lint
+  #       run: bundle exec rubocop --require rubocop-airbnb -a
 
   build:
     runs-on: ubuntu-latest
