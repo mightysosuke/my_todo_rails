@@ -44,7 +44,7 @@ jobs:
     - name: Build and test
       env:
         RAILS_ENV: test
-        # DATABASE_URL: mysql2://root:password@127.0.0.1:3306/my_todo_rails_test
+        DATABASE_URL: mysql2://root:password@127.0.0.1:3306/my_todo_rails_test
       run: |
         printenv
         gem install bundler
