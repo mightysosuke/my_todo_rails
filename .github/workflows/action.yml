@@ -7,8 +7,10 @@ on:
     branches: [ feature/41 ]
 
 jobs:
-  rspec:
+  build:
+
     runs-on: ubuntu-latest
+
     services:
       db:
         image: mysql:8.0
@@ -20,18 +22,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup docker
-      shell: bash
-      run: |
-        make docker_build
-        make docker_start
-        make db_create
-        make db_migrate
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.1.4
+
+    - name: Build and test
       env:
         RAILS_ENV: test
-    - name: RSpec
-      env:
-        RAILS_ENV: test
-        # DATABASE_URL: mysql2://root:password@localhost:3306/my_todo_rails_test
+        DATABASE_URL: mysql2://root:password@localhost:3306/my_todo_rails_test
       run: |
-        make rspec
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        sudo /etc/init.d/mysql start
+        bundle exec rails db:create
+        bundle exec rails db:schema:load
+        bundle exec rspec
