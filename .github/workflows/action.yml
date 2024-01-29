@@ -16,7 +16,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: test_database
+          MYSQL_DATABASE: my_todo_rails_test
         ports: ['3306:3306']
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
 
@@ -28,10 +28,10 @@ jobs:
       with:
         ruby-version: 3.1.4
 
-    - name: Build and test with Rake
+    - name: Build and test
       env:
         RAILS_ENV: test
-        DATABASE_URL: mysql2://root:password@localhost:3306/test_database
+        DATABASE_URL: mysql2://root:password@localhost:3306/my_todo_rails_test
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
